@@ -35,7 +35,7 @@ i = 1,...,10
 ## Improvements
 
 The improvements:
-- multiprocessed initiation - using multiple processes when generating random values for the connections between areas and stimuli
+- multithreaded initiation - using multiple threads when generating random values for the connections between areas and stimuli (dividing the matrix to blocks and filling each block separately with random values).
 - numpy stuff - used numpy functionalities better. Particularly, we substituted python operations on numpy types with built-in numpy operations (for example, 2d-array row operation instead of a for loop). These improvements have cut a lot of the overhead created by working with python.
 
 Here are the graphs:
