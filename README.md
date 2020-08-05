@@ -1,3 +1,4 @@
+
 ![https://img.shields.io/badge/performance-improved-green](https://img.shields.io/badge/performance-improved-green)
 
 ## Performance
@@ -34,11 +35,31 @@ i = 1,...,10
 
 ## Improvements
 
-The improvements:
+Initially we had two versions for the connectomes:
+__________________________________________________________
+
+### The Lazy Implementation
+
+We started working with a lazy implementation - the connectomes are generated at runtime, so the initiation of the connectomes is very fast, but the running time is relatively slow since random values have to be generated all the time.
+
+### The Non-Lazy Implementation
+
+In this implementation the connectomes are generated at the beginning to have random values, and the rest of the code is deterministic. This means that the generation of the connectome is slower, but the running time after initiation is significantly shorter.
+___________________________________________________________
+
+Comparing the two types of connectomes gave the following results:
+
+|first_projects| many_projects |
+|--|--|
+| ![first_projects](https://github.com/Assemblies-Performance/graphs/blob/master/performance2/first_projects.JPG?raw=true) | ![many_projects](https://github.com/Assemblies-Performance/graphs/blob/master/performance2/many_projects.JPG?raw=true) |
+
+and so we chose to use the non-lazy implementation.
+
+But of course that could be improved further, so we changed it some more:
 - multithreaded initiation - using multiple threads when generating random values for the connections between areas and stimuli (dividing the matrix to blocks and filling each block separately with random values).
 - numpy stuff - used numpy functionalities better. Particularly, we substituted python operations on numpy types with built-in numpy operations (for example, 2d-array row operation instead of a for loop). These improvements have cut a lot of the overhead created by working with python.
 
 Here are the graphs:
 |first_projects| many_projects |
 |--|--|
-| ![enter image description here](https://github.com/Assemblies-Performance/graphs/blob/master/perforamance1/first_projects.jpg?raw=true) | ![enter image description here](https://github.com/Assemblies-Performance/graphs/blob/master/perforamance1/many_projects.jpg?raw=true) |
+| ![first_projects](https://github.com/Assemblies-Performance/graphs/blob/master/perforamance1/first_projects.jpg?raw=true) | ![many_projects](https://github.com/Assemblies-Performance/graphs/blob/master/perforamance1/many_projects.jpg?raw=true) |
