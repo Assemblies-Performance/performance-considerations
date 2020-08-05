@@ -32,7 +32,7 @@ s1 = Stimulus(n=math.floor(math.sqrt(N * i)), beta=BETA)
 i = 1,...,10
 ```
 
-## First improvements
+## Improvements
 
 The improvements:
 - multiprocessed initiation - using multiple processes when generating random values for the connections between areas and stimuli
