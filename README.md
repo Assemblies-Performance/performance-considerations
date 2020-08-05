@@ -1,10 +1,11 @@
 
+
 ![https://img.shields.io/badge/performance-improved-green](https://img.shields.io/badge/performance-improved-green)
 
 ## Performance
 
 We implemented the Connectome.project method.
-We started by implementing a quite naiive version of the method, but found a few ways to improve the performance.
+We started by working on a pre-implemented lazy version, and we implemented a new and quite naive non lazy version of the method, but found a few ways to improve the performance.
 Every improvement is compared to the original version to see how much it actually improved.
 Graphs are included bellow.
 
@@ -44,18 +45,18 @@ We started working with a lazy implementation - the connectomes are generated at
 
 ### The Non-Lazy Implementation
 
-In this implementation the connectomes are generated at the beginning to have random values, and the rest of the code is deterministic. This means that the generation of the connectome is slower, but the running time after initiation is significantly shorter.
+In this implementation the connectomes are generated at the beginning to have random values, and the rest of the code is deterministic. This means that the generation of the connectome is slower, but the running time after initiation is significantly faster.
 ___________________________________________________________
 
-Comparing the two types of connectomes gave the following results:
+The simpler and naive non lazy implementation gave us good results. These graphs show the results. The lazy "new" implementation is after applying further improvements, as will be explained below.
 
 |first_projects| many_projects |
 |--|--|
 | ![first_projects](https://github.com/Assemblies-Performance/graphs/blob/master/performance2/first_projects.JPG?raw=true) | ![many_projects](https://github.com/Assemblies-Performance/graphs/blob/master/performance2/many_projects.JPG?raw=true) |
 
-and so we chose to use the non-lazy implementation.
+At this point, we discarded the lazy implementation and continued working only on the non lazy one. 
 
-But of course that could be improved further, so we changed it some more:
+But of course that could be improved further, so we changed some more things:
 - multithreaded initiation - using multiple threads when generating random values for the connections between areas and stimuli (dividing the matrix to blocks and filling each block separately with random values).
 - numpy stuff - used numpy functionalities better. Particularly, we substituted python operations on numpy types with built-in numpy operations (for example, 2d-array row operation instead of a for loop). These improvements have cut a lot of the overhead created by working with python.
 
@@ -63,3 +64,5 @@ Here are the graphs:
 |first_projects| many_projects |
 |--|--|
 | ![first_projects](https://github.com/Assemblies-Performance/graphs/blob/master/perforamance1/first_projects.jpg?raw=true) | ![many_projects](https://github.com/Assemblies-Performance/graphs/blob/master/perforamance1/many_projects.jpg?raw=true) |
+
+![https://media.tenor.com/images/5d0f73270ee10ec191d392a59e4accfa/tenor.gif](https://media.tenor.com/images/5d0f73270ee10ec191d392a59e4accfa/tenor.gif)
