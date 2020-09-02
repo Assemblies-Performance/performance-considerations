@@ -41,7 +41,12 @@ __________________________________________________________
 
 ### The Lazy Implementation
 
-We started working with a lazy implementation - the connectomes are generated at runtime, so the initiation of the connectomes is very fast, but the running time is relatively slow since random values have to be generated all the time.
+We started working with a [lazy implementation](https://github.com/dmitropolsky/assemblies).
+
+In this implementation, the connectomes are generated at runtime, in a way that was supposed to simulate a brain projection of a fully initiated brain.
+The initiation of the connectomes is very fast, but the running time is relatively slow since random values have to be generated all the time.
+
+In addition to performance problems, this version was algorithmically incorrect: the winner selection process was inherently flawed, and as a result, the winners' distribution was wrong. Trying to fix this bug even worsened the performance issues. This was a major factor in our choice to abandon this implementation. 
 
 ### The Non-Lazy Implementation
 
